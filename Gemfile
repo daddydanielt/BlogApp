@@ -57,7 +57,7 @@ group :development, :test do
   gem 'faker'
   #gem 'letter_opener', git: 'git://github.com/ryanb/letter_opener.git', branch: 'master'
   #gem 'thin'
-  gem 'rspec'
+  gem 'rspec-rails'
   #--->
 end
 
