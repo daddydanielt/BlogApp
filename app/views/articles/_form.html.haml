@@ -1,0 +1,15 @@
+%h3.text-center Adding New Article
+.row
+  .col-md-12
+    = form_for @article, html: {class: "form-horizontal", role: "form"} do |f|
+      .form-group
+        = f.label :title, class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :title, class: "form-control", placeholder: "Title of artilce", autofocus: true
+      .form-group
+        = f.label :body, class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_area :body, class: "form-control", rows:10, placeholder: "Body of artilce"
+      .form-group
+        .col-sm-offset-1.col-sm-11
+          = f.submit class: "btn btn-primary btn-lg pull-right"
