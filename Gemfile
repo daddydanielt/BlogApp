@@ -78,6 +78,8 @@ group :development do
   gem 'rb-fsevent',  require: false
   gem 'guard-rspec', require: false
   gem 'guard-livereload', require: false
+  gem 'hirb'
+  gem 'hirb-unicode'
   #--->
 end
 
