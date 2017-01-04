@@ -74,6 +74,7 @@ group :development do
 
   #--->
   gem 'guard',  require: false
+  gem 'spring-commands-rspec'
   #gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'rb-fsevent',  require: false
   gem 'guard-rspec', require: false
