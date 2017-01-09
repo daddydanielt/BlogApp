@@ -85,7 +85,40 @@ group :development do
 end
 
 group :test do
+  #--->
   gem 'capybara'
+
+  # #Test your ActionMailer and Mailer messages with Capybara
+  # gem 'capybara-email'
+
+  # #A Capybara driver for headless WebKit to test JavaScript web apps
+  # gem 'capybara-webkit'
+
+  # #WebDriver is a tool for writing automated tests of websites.
+  # #It aims to mimic the behaviour of a real user, and as such interacts with the HTML of the application.
+  # gem 'selenium-webdriver'
+
+  # #A helper for launching cross-platform applications in a fire and forget manner.
+  # #ex: save_and_open_page
+  # gem 'launchy'
+
+  # #Record your test suite's HTTP interactions and replay them during future test runs for fast, deterministic, accurate tests.
+  # gem 'vcr'
+
+  # #Library for stubbing and setting expectations on HTTP requests in Ruby.
+  # gem 'webmock'
+
+  # #Fabrication is an object generation framework for Ruby.
+  # gem 'fabrication'
+
+  # #Shoulda Matchers provides RSpec- and Minitest-compatible one-liners that test common Rails functionality.
+  # gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
+
+  # #Strategies for cleaning databases in Ruby. Can be used to ensure a clean state for testing.
+  # gem 'database_cleaner'
+  #--->
+
 end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
