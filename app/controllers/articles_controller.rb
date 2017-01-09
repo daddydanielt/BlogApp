@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :delete]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
     @articles = Article.all
@@ -14,6 +14,19 @@ class ArticlesController < ApplicationController
 
   def edit
   end
+
+  def destroy
+
+    @article.destroy
+    if @article.destroyed?
+      flash[:success] = "Article has been deleted"
+      redirect_to articles_path
+    else
+      flash.now[:success] = "Article has not been deleted"
+      render :show
+    end
+  end
+
 
   def update
     if @article.update(article_params)
