@@ -68,13 +68,11 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
     <div class="container-fluid">
       <% flash.each do |name,msg| %>
-        <div class="alert alert-<%= "#{name}" %>">
-          <a href="#" class='cloase' data-dismiss='alert' &#215;></a>
+        <div class="alert alert-<%= "#{(name == "notice") ? "warning" : name}" %> alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <%= content_tag(:div, msg, :id =>"flash_#{name}") if msg.is_a?(String) %>
-
         </div>
       <% end %>
 

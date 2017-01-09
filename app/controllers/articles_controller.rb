@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_filter :set_article, only: [:show, :edit, :update, :delete]
 
   def index
     @articles = Article.all
@@ -6,6 +7,11 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+  end
+
+  def show
+
+
   end
 
   def create
@@ -22,5 +28,10 @@ class ArticlesController < ApplicationController
   private
   def article_params
     params.require(:article).permit(:title,:body)
+  end
+
+  def set_article
+    @article = Article.find_by_id(params[:id])
+    redirect_to(articles_path, notice: "can't find article") unless @article.present?
   end
 end

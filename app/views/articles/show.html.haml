@@ -1,0 +1,6 @@
+%article.detail-article
+  %h1.article-dedatil-title #{@article.title}
+  .article-date.glyphicon.glyphicon-calendar
+    #{@article.created_at.strftime("%b %d, %Y")}, #{time_ago_in_words(@article.created_at)} ago
+  .article-body
+    = simple_format @article.body
