@@ -61,6 +61,15 @@ guard :rspec, cmd: "rspec" do
   dsl.watch_spec_files_for(rails.app_files)
   dsl.watch_spec_files_for(rails.views)
 
+  # [Daniel][start] --->
+  # %r{} is equivalent to the /.../ notation, but allows you to have '/' in your regexp without having to escape them:
+  # \. => contains a dot
+  # $ => the end, nothing after it
+  # i => case insensitive
+  watch(%r{^app/controllers/(.+)_(controller)\.rb$}) {"spec/features"}
+  watch(%r{^app/models/(.+)\.rb$}) { "spec/features"}
+  # [Daniel][end] --->
+
   watch(rails.controllers) do |m|
     [
       rspec.spec.("routing/#{m[1]}_routing"),
@@ -71,12 +80,22 @@ guard :rspec, cmd: "rspec" do
 
   # Rails config changes
   watch(rails.spec_helper)     { rspec.spec_dir }
-  watch(rails.routes)          { "#{rspec.spec_dir}/routing" }
+
+  # [Daniel][start] --->
+  # [Daniel][mark] watch(rails.routes)          { "#{rspec.spec_dir}/routing" }
+  watch(rails.routes)          {  "spec" }
+  # [Daniel][end] --->
+
   watch(rails.app_controller)  { "#{rspec.spec_dir}/controllers" }
 
   # Capybara features specs
-  watch(rails.view_dirs)     { |m| rspec.spec.("features/#{m[1]}") }
-  watch(rails.layouts)       { |m| rspec.spec.("features/#{m[1]}") }
+
+  # [Daniel][start] --->
+  # [Daniel][mark] watch(rails.view_dirs) { |m| rspec.spec.("features/#{m[1]}") }
+  # [Daniel][mark] watch(rails.layouts)       { |m| rspec.spec.("features/#{m[1]}") }
+  watch(rails.view_dirs)     {"spec/features"}
+  watch(rails.layouts)       {"spec/features"}
+  # [Daniel][end] --->
 
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})
