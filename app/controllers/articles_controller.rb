@@ -10,8 +10,19 @@ class ArticlesController < ApplicationController
   end
 
   def show
+  end
 
+  def edit
+  end
 
+  def update
+    if @article.update(article_params)
+      flash[:success] = "Article has been updated"
+      redirect_to article_path(@article)
+    else
+      flash.now[:warning] = "Article has not been updated"
+      render :edit
+    end
   end
 
   def create
