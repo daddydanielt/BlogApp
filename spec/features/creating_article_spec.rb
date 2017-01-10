@@ -1,6 +1,12 @@
 require 'rails_helper'
+include AuthenticationMacros
 
 RSpec.feature "Creating Artices" do
+  before  do
+    @user = User.create(email: "test@test.com", password: "123456", password_confirmation: "123456")
+    user_sign_in(@user.email, "123456")
+  end
+
   scenario "A user creates a new article" do
     visit "/"
     click_link "New Article"
