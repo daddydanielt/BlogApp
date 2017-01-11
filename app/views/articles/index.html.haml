@@ -8,7 +8,7 @@
       = link_to article.title, article_path(article)
     .article-body
       #{truncate(article.body, length: 500)}
-    .article-authr
+    .article-author
       .small Created by: #{article.user.email unless article.user.blank?}
 
 
