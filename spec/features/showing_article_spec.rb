@@ -2,7 +2,13 @@ require 'rails_helper'
 
 RSpec.feature "Showing Article" do
   before do
-    @article1 = Article.create(title: "The 1st article", body: "Body of the 1st article")
+    #@user = User.create(email: "test@test.com", password: "123456")
+    @user = Fabricate(:user)
+
+    #@article1 = Article.create(title: "The 1st article", body: "Body of the 1st article", user: @user)
+    @article1 = Fabricate(:article, user: @user)
+
+
     @article2 = Article.find_by_id(999);
   end
 

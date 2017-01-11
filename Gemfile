@@ -109,7 +109,7 @@ group :test do
   # gem 'webmock'
 
   # #Fabrication is an object generation framework for Ruby.
-  # gem 'fabrication'
+   gem 'fabrication'
 
   # #Shoulda Matchers provides RSpec- and Minitest-compatible one-liners that test common Rails functionality.
   # gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'

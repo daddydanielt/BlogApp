@@ -3,10 +3,10 @@ include AuthenticationMacros
 
 RSpec.feature "Edit Article" do
   before do
-    @article = Article.create(title: "the 1st article", body: "the body of 1st article")
-
-    @user = User.create(email: "test@test.com", password: "123456", password_confirmation: "123456")
-    user_sign_in(@user.email, "123456")
+    user_password = "123456"
+    @user = Fabricate(:user, password: user_password, password_confirmation: user_password)
+    @article = Fabricate(:article, user: @user, title: "the 1st article", body: "the body of 1st article")
+    user_sign_in(@user.email, user_password)
   end
 
   scenario "A user update acrticle successfully" do
