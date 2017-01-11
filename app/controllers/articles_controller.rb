@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show ]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :require_author, only: [:edit, :update, :destroy]
 
   def index
     @articles = Article.all
@@ -10,14 +11,11 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def destroy
-
     @article.destroy
     if @article.destroyed?
       flash[:success] = "Article has been deleted"
@@ -27,7 +25,6 @@ class ArticlesController < ApplicationController
       render :show
     end
   end
-
 
   def update
     if @article.update(article_params)
@@ -59,5 +56,12 @@ class ArticlesController < ApplicationController
   def set_article
     @article = Article.find_by_id(params[:id])
     redirect_to(articles_path, notice: "can't find article") unless @article.present?
+  end
+
+  def require_author
+    if current_user != @article.author
+      flash[:warning] = "Permission denied!"
+      redirect_to root_path
+    end
   end
 end
