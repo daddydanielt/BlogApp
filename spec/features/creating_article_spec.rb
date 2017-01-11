@@ -5,6 +5,7 @@ RSpec.feature "Creating Artices" do
   before  do
     @user = User.create(email: "test@test.com", password: "123456", password_confirmation: "123456")
     user_sign_in(@user.email, "123456")
+    #login_as(@user) # using Warden::Test::Helpers
   end
 
   scenario "A user creates a new article" do
