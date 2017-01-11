@@ -1,5 +1,5 @@
 Fabricator(:article) do
-  user
+  author
   title { Faker::Book.title }
   body { Faker::Lorem.sentence }
 end
