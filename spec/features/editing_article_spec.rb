@@ -3,13 +3,14 @@ include AuthenticationMacros
 
 RSpec.feature "Edit Article" do
   before do
-    user_password = "123456"
-    @user = Fabricate(:user, password: user_password, password_confirmation: user_password)
-    @article = Fabricate(:article, user: @user, title: "the 1st article", body: "the body of 1st article")
-    user_sign_in(@user.email, user_password)
+    @password = "123456"
+    @user = Fabricate(:user, password: @password, password_confirmation: @password)
+    @other_user = Fabricate(:user, password: @password, password_confirmation: @password)
+    @article = Fabricate(:article, author: @user, title: "the 1st article", body: "the body of 1st article")
   end
 
-  scenario "A user update acrticle successfully" do
+  scenario "A signed in user(author) should update acrticle successfully" do
+    user_sign_in(@user.email, @password)
     visit "/"
     click_link @article.title
     click_link "Edit Article"
@@ -23,14 +24,14 @@ RSpec.feature "Edit Article" do
     expect(current_path).to eq(article_path(@article))
   end
 
-  scenario "A user fails to update an article" do
+  scenario "article fileds validation" do
+    user_sign_in(@user.email, @password)
     visit "/"
     click_link @article.title
     click_link "Edit Article"
     fill_in "Title", with: ""
     fill_in "Body", with: ""
     click_button "Update Article"
-
     expect(page).to have_content("Article has not been updated")
     expect(current_path).to eq(article_path(@article))
   end

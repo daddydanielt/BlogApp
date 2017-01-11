@@ -1,6 +1,7 @@
 %h1 Listing all Articles
 
-= link_to "New Article", new_article_path, class: "btn btn-default btn-lg", id: "new-article-btn"
+- if user_signed_in?
+  = link_to "New Article", new_article_path, class: "btn btn-default btn-lg", id: "new-article-btn"
 
 - @articles.each do |article|
   .well.well-lg.article
@@ -9,7 +10,7 @@
     .article-body
       #{truncate(article.body, length: 500)}
     .article-author
-      .small Created by: #{article.user.email unless article.user.blank?}
+      .small Created by: #{article.author.email unless article.author.blank?}
 
 
 
