@@ -60,6 +60,7 @@ group :development, :test do
   #gem 'letter_opener', git: 'git://github.com/ryanb/letter_opener.git', branch: 'master'
   #gem 'thin'
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
   #--->
 
 end
