@@ -9,3 +9,40 @@
     #{@article.created_at.strftime("%b %d, %Y")}, #{time_ago_in_words(@article.created_at)} ago
   .article-body
     = simple_format @article.body
+
+
+.row
+  .col-md-12
+    = form_for [@article, @comment], html: {class: "form-horizontal", role: "form"} do |f|
+      - if @comment.errors.any?
+        .panel.panel-danger.col-md-offset-1
+          .panel-heading
+            %h2.panel-title
+              = pluralize @comment.errors.count, "error"
+              prohibited this comment from being saved:
+            .panel-body
+              %ul
+                - @comment.errors.full_messages.each do |msg|
+                  %li #{msg}
+      .form-group
+        = f.label :body, "New Comment", class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_area :body,  class: "form-control", rows: 10, placeholder: "Your comment"
+      .form-group
+        .col-sm-offset-1.col-sm-11
+          = f.submit class: "btn btn-primary btn-lg pull-right"
+.row
+  .col-md-12
+    - if @article.comments.persisted.present?
+      %h2 Comments
+      - @article.comments.persisted.each do |comment|
+        .col-md-12
+          .comment-body
+            #{comment.body}
+        .col-md-4
+          .comment-time.small
+            #{time_ago_in_words(comment.created_at)} ago,
+        .col-md-8
+          .comment-commenter.small
+            by #{comment.commenter_email}
+

@@ -33,6 +33,7 @@ body {
     color: #818181;
   }
   .article-body {
+    margin-bottom: 40px;
     font-size: 1.5em;
     color: black;
   }
@@ -72,4 +73,19 @@ body {
   padding-top: 10px;
   font-style: italic;
   color: #818181;
+}
+
+
+.comment-body {
+  color: black;
+}
+
+.comment-time {
+  color: #818181;
+  font-style: italic;
+}
+.comment-commenter {
+  margin-bottom: 20px;
+  color: #818181;
+  font-style: italic;
 }

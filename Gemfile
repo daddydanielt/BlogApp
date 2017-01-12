@@ -54,7 +54,6 @@ group :development, :test do
 
   #[Daniel]--->
   gem 'pry'
-  gem "better_errors"
   gem "binding_of_caller"
   gem 'faker'
   #gem 'letter_opener', git: 'git://github.com/ryanb/letter_opener.git', branch: 'master'
@@ -74,6 +73,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   #--->
+  gem "better_errors"
   gem 'guard',  require: false
   gem 'spring-commands-rspec'
   #gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i

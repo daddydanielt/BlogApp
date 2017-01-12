@@ -1,8 +1,8 @@
 .container-fluid
-  - flash.each do |name,msg|
+  - flash.each do |name, msg|
     %div{:class => "alert alert-#{"#{(name == "notice") ? "warning" : name}"} alert-dismissable"}
       %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} ×
-      = content_tag(:div, msg, :id =>"flash_#{name}") if msg.is_a?(String)
+      = content_tag(:div, simple_format(msg), :id =>"flash_#{name}") if msg.is_a?(String)
   .row
     .col-md-10.col-md-offset-1
       .col-md-8
