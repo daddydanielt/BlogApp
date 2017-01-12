@@ -18,5 +18,13 @@ class Article < ApplicationRecord
     end
   end
 
+  def latest_comment(reload=false)
+    if reload
+      @latest_comment = reload.comments.persisted.last
+    else
+      @latest_comment ||= comments.persisted.last
+    end
+  end
+
 
 end

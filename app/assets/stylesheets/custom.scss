@@ -77,15 +77,18 @@ body {
 
 
 .comment-body {
-  color: black;
-}
+  color: #777777;
+  }
 
 .comment-time {
-  color: #818181;
+  color: #9d9d9d;
   font-style: italic;
 }
 .comment-commenter {
   margin-bottom: 20px;
-  color: #818181;
+  color: #9d9d9d;
   font-style: italic;
+}
+.latest-comment{
+  color: #333333;
 }

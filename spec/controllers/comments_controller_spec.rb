@@ -31,10 +31,8 @@ RSpec.describe CommentsController, type: :controller do
         the_comment_message = Faker::Lorem.sentence
         post :create, params: {article_id: article, comment: { body: the_comment_message}}
 
-        expect(response).to redirect_to(article_path(article))
+        expect(response).to redirect_to(new_user_session_path)
         expect(article.comments).to be_empty
-        expect(flash[:warning]).to include("Comment has not been created")
-        expect(flash[:warning]).to include("Please <a href='#{new_user_session_path}'>Sign in")
       end
     end
 

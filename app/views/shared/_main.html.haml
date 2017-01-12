@@ -1,4 +1,5 @@
 .container-fluid
+
   - flash.each do |name, msg|
     %div{:class => "alert alert-#{"#{(name == "notice") ? "warning" : name}"} alert-dismissable"}
       %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} ×

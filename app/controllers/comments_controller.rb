@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_article
 
   def create
@@ -7,11 +7,12 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       flash[:success] = "Comment has been created"
+      redirect_to article_path(@article)
     else
       flash[:warning] = "Comment has not been created"
-      flash[:warning] << "<br/> Please <a href='#{new_user_session_path}'>Sign in</a>"
+      #flash[:warning] << "<br/> Please <a href='#{new_user_session_path}'>Sign in</a>"
+      render template: "articles/show"
     end
-    redirect_to article_path(@article)
   end
 
 
